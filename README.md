@@ -13,7 +13,7 @@ Add the pccomponentes/documentation-bundle package to your require section in th
 $ composer require pccomponentes/documentation-bundle
 ```
 
-Add the DocumentationBundle to your application's kernel
+Add the DocumentationBundle to your application's kernel.
 
 ```php
 <?php
@@ -28,7 +28,7 @@ public function registerBundles()
 }
 ```
 
-Depending on your installation, maybe you should add it to the bundles.php file instead
+Depending on your installation, maybe you should add it to the bundles.php file instead.
 
 ```php
 <?php
@@ -43,7 +43,7 @@ return [
 Usage
 -----
 
-Configure the paths to your YAML files in your config.yml (Both keys are optional)
+Configure the paths to your YAML files in your config.yml (Both keys are optional).
 
 ```yaml
 documentation:
@@ -51,7 +51,7 @@ documentation:
     asyncapi: 'docs/asyncapi.yml'
 ```
 
-Enable the paths in your routing.yml file
+Enable the paths in your routing.yml file.
 
 ```yaml
 documentation:
@@ -59,10 +59,10 @@ documentation:
     prefix: /docs
 ```
 
-You can choose a prefix where the documentation will be published
+You can choose a prefix where the documentation will be published.
 
-After this, you should be able to see the Swagger interface at `/openapi` (or /docs/openapi if you used the `docs` 
-prefix) and the AsyncApi at `/asyncapi`
+After this, you should be able to see the Swagger interface at `/openapi` (or `/docs/openapi` if you used the `docs` 
+prefix) and the AsyncApi at `/asyncapi`.
 
 Also, you can customize the [SwaggerUI options](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/) 
 using the key `swagger_options`, and the [AsyncApi ones](https://github.com/asyncapi/asyncapi-react#web-component)
