@@ -1,0 +1,24 @@
+services:
+    PcComponentes\DocumentationBundle\Service\OpenApiGenerator:
+        class: PcComponentes\DocumentationBundle\Service\OpenApiGenerator
+        arguments:
+            - '@router'
+            - '%kernel.project_dir%'
+
+    PcComponentes\DocumentationBundle\Service\AsyncApiGenerator:
+        class: PcComponentes\DocumentationBundle\Service\AsyncApiGenerator
+        arguments:
+            - '@router'
+            - '%kernel.project_dir%'
+
+    PcComponentes\DocumentationBundle\Controller\OpenApiController:
+        class: PcComponentes\DocumentationBundle\Controller\OpenApiController
+        arguments:
+            - '@PcComponentes\DocumentationBundle\Service\OpenApiGenerator'
+        tags: ['controller.service_arguments']
+
+    PcComponentes\DocumentationBundle\Controller\AsyncApiController:
+        class: PcComponentes\DocumentationBundle\Controller\AsyncApiController
+        arguments:
+            - '@PcComponentes\DocumentationBundle\Service\AsyncApiGenerator'
+        tags: ['controller.service_arguments']

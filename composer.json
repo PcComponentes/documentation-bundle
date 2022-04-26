@@ -1,0 +1,25 @@
+{
+  "name": "pccomponentes/documentation-bundle",
+  "description": "PcComponentes Documentation Bundle",
+  "license": "MIT",
+  "type": "symfony-bundle",
+  "authors": [
+    {
+      "name": "José Gilberto Mullor",
+      "email": "gilberto.mullor@pccomponentes.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PcComponentes\\DocumentationBundle\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.4 | ^8.0",
+    "symfony/http-foundation": "^4.4 | ^5.0 | ^6.0",
+    "symfony/dependency-injection": "^4.4 | ^5.0 | ^6.0",
+    "symfony/config": "^4.4 | ^5.0 | ^6.0",
+    "symfony/http-kernel": "^4.4 | ^5.0 | ^6.0",
+    "symfony/routing": "^4.4 | ^5.0 | ^6.0"
+  }
+}

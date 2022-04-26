@@ -1,0 +1,19 @@
+pccomponentes.documentation.openapi.definition:
+    path: /openapi.yaml
+    controller: PcComponentes\DocumentationBundle\Controller\OpenApiController::definition
+    methods: [GET]
+
+pccomponentes.documentation.openapi.viewer:
+    path: /openapi
+    controller: PcComponentes\DocumentationBundle\Controller\OpenApiController::viewer
+    methods: [GET]
+
+pccomponentes.documentation.asyncapi.definition:
+    path: /asyncapi.yaml
+    controller: PcComponentes\DocumentationBundle\Controller\AsyncApiController::definition
+    methods: [GET]
+
+pccomponentes.documentation.asyncapi.viewer:
+    path: /asyncapi
+    controller: PcComponentes\DocumentationBundle\Controller\AsyncApiController::viewer
+    methods: [GET]
