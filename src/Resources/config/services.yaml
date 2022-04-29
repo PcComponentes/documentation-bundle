@@ -35,4 +35,5 @@ services:
       class: PcComponentes\DocumentationBundle\Controller\ConvertersController
       arguments:
         - '@PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator'
+        - '@PcComponentes\DocumentationBundle\Service\ConverterListing'
       tags: ['controller.service_arguments']
