@@ -3,15 +3,15 @@
 namespace PcComponentes\DocumentationBundle\Controller;
 
 use PcComponentes\DocumentationBundle\Exception\UnavailableDefinition;
-use PcComponentes\DocumentationBundle\Service\Generator\Generator;
+use PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-abstract class BaseController
+final class ConvertersController
 {
-    private Generator $generator;
+    private ConvertersGenerator $generator;
 
-    public function __construct(Generator $generator)
+    public function __construct(ConvertersGenerator $generator)
     {
         $this->generator = $generator;
     }
@@ -20,15 +20,6 @@ abstract class BaseController
     {
         try {
             return new Response($this->generator->render());
-        } catch (UnavailableDefinition $definition) {
-            throw new NotFoundHttpException($definition->getMessage(), $definition);
-        }
-    }
-
-    public function definition(): Response
-    {
-        try {
-            return new Response($this->generator->definition());
         } catch (UnavailableDefinition $definition) {
             throw new NotFoundHttpException($definition->getMessage(), $definition);
         }

@@ -1,0 +1,15 @@
+name: Test on PHP7
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        name: 'Run checkout'
+      - run: make cache-folders build composer-install-7
+        name: 'Build environment'
+      - run: make tests-7
+        name: 'Run unit tests'

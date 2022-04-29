@@ -1,6 +1,6 @@
 <?php
 
-namespace PcComponentes\DocumentationBundle\Service;
+namespace PcComponentes\DocumentationBundle\Service\Generator;
 
 use PcComponentes\DocumentationBundle\Exception\UnavailableDefinition;
 use Symfony\Component\Routing\RouterInterface;

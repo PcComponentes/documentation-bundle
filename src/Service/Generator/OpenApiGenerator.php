@@ -1,12 +1,12 @@
 <?php
 
-namespace PcComponentes\DocumentationBundle\Service;
+namespace PcComponentes\DocumentationBundle\Service\Generator;
 
 class OpenApiGenerator extends Generator
 {
     protected function template(): string
     {
-        return '
+        return trim('
         <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +20,11 @@ class OpenApiGenerator extends Generator
 <script src="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js" crossorigin></script>
 <script>
 window.onload = () => {
-    window.ui = SwaggerUIBundle(' . \json_encode($this->config(), \JSON_PRETTY_PRINT) . ');
+    window.ui = SwaggerUIBundle(' . \json_encode($this->config(), \JSON_PRETTY_PRINT) . ')
 };
 </script>
 </body>
-</html>';
+</html>');
     }
 
     protected function config(): array

@@ -3,12 +3,11 @@ declare(strict_types=1);
 
 namespace PcComponentes\DocumentationBundle\DependencyInjection;
 
-use PcComponentes\DocumentationBundle\Service\AsyncApiGenerator;
-use PcComponentes\DocumentationBundle\Service\OpenApiGenerator;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\DependencyInjection\Extension\Extension;
+use PcComponentes\DocumentationBundle\Service\Generator\AsyncApiGenerator;
+use PcComponentes\DocumentationBundle\Service\Generator\OpenApiGenerator;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class DocumentationExtension extends Extension

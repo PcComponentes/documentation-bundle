@@ -1,24 +1,38 @@
 services:
-    PcComponentes\DocumentationBundle\Service\OpenApiGenerator:
-        class: PcComponentes\DocumentationBundle\Service\OpenApiGenerator
+    PcComponentes\DocumentationBundle\Service\Generator\OpenApiGenerator:
+        class: PcComponentes\DocumentationBundle\Service\Generator\OpenApiGenerator
         arguments:
             - '@router'
             - '%kernel.project_dir%'
 
-    PcComponentes\DocumentationBundle\Service\AsyncApiGenerator:
-        class: PcComponentes\DocumentationBundle\Service\AsyncApiGenerator
+    PcComponentes\DocumentationBundle\Service\Generator\AsyncApiGenerator:
+        class: PcComponentes\DocumentationBundle\Service\Generator\AsyncApiGenerator
         arguments:
             - '@router'
             - '%kernel.project_dir%'
+
+    PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator:
+      class: PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator
+      arguments:
+        - '@PcComponentes\DocumentationBundle\Service\ConverterListing'
+
+    PcComponentes\DocumentationBundle\Service\ConverterListing:
+      class: PcComponentes\DocumentationBundle\Service\ConverterListing
 
     PcComponentes\DocumentationBundle\Controller\OpenApiController:
         class: PcComponentes\DocumentationBundle\Controller\OpenApiController
         arguments:
-            - '@PcComponentes\DocumentationBundle\Service\OpenApiGenerator'
+            - '@PcComponentes\DocumentationBundle\Service\Generator\OpenApiGenerator'
         tags: ['controller.service_arguments']
 
     PcComponentes\DocumentationBundle\Controller\AsyncApiController:
         class: PcComponentes\DocumentationBundle\Controller\AsyncApiController
         arguments:
-            - '@PcComponentes\DocumentationBundle\Service\AsyncApiGenerator'
+            - '@PcComponentes\DocumentationBundle\Service\Generator\AsyncApiGenerator'
         tags: ['controller.service_arguments']
+
+    PcComponentes\DocumentationBundle\Controller\ConvertersController:
+      class: PcComponentes\DocumentationBundle\Controller\ConvertersController
+      arguments:
+        - '@PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator'
+      tags: ['controller.service_arguments']
