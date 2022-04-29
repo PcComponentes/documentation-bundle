@@ -62,7 +62,7 @@ documentation:
 You can choose a prefix where the documentation will be published.
 
 After this, you should be able to see the Swagger interface at `/openapi` (or `/docs/openapi` if you used the `docs` 
-prefix) and the AsyncApi at `/asyncapi`.
+prefix), the AsyncApi at `/asyncapi`, and all of your event converters at `/converters`.
 
 Also, you can customize the [SwaggerUI options](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/) 
 using the key `swagger_options`, and the [AsyncApi ones](https://github.com/asyncapi/asyncapi-react#web-component)

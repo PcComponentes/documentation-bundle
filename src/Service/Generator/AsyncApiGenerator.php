@@ -1,12 +1,12 @@
 <?php
 
-namespace PcComponentes\DocumentationBundle\Service;
+namespace PcComponentes\DocumentationBundle\Service\Generator;
 
 class AsyncApiGenerator extends Generator
 {
     protected function template(): string
     {
-        return '
+        return trim('
         <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +21,7 @@ class AsyncApiGenerator extends Generator
 </asyncapi-component>
 </body>
 </html>
-        ';
+        ');
     }
 
     protected function config(): array

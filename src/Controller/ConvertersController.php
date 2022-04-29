@@ -3,17 +3,21 @@
 namespace PcComponentes\DocumentationBundle\Controller;
 
 use PcComponentes\DocumentationBundle\Exception\UnavailableDefinition;
-use PcComponentes\DocumentationBundle\Service\Generator\Generator;
+use PcComponentes\DocumentationBundle\Service\ConverterListing;
+use PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-abstract class BaseController
+final class ConvertersController
 {
-    private Generator $generator;
+    private ConvertersGenerator $generator;
+    private ConverterListing $converterListing;
 
-    public function __construct(Generator $generator)
+    public function __construct(ConvertersGenerator $generator, ConverterListing $converterListing)
     {
         $this->generator = $generator;
+        $this->converterListing = $converterListing;
     }
 
     public function viewer(): Response
@@ -25,12 +29,8 @@ abstract class BaseController
         }
     }
 
-    public function definition(): Response
+    public function definition(): JsonResponse
     {
-        try {
-            return new Response($this->generator->definition());
-        } catch (UnavailableDefinition $definition) {
-            throw new NotFoundHttpException($definition->getMessage(), $definition);
-        }
+        return new JsonResponse($this->converterListing->list());
     }
 }

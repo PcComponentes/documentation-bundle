@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  php7:
+    environment:
+      - XDEBUG_MODE=coverage
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: php7
+    volumes:
+      - .:/var/app
+      - ~/.composer:/.composer
+
+  php8:
+    environment:
+      - XDEBUG_MODE=coverage
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: php8
+    volumes:
+      - .:/var/app
+      - ~/.composer:/.composer

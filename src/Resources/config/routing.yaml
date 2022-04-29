@@ -17,3 +17,13 @@ pccomponentes.documentation.asyncapi.viewer:
     path: /asyncapi
     controller: PcComponentes\DocumentationBundle\Controller\AsyncApiController::viewer
     methods: [GET]
+    
+pccomponentes.documentation.converters.definition:
+  path: /converters.json
+  controller: PcComponentes\DocumentationBundle\Controller\ConvertersController::definition
+  methods: [GET]
+
+pccomponentes.documentation.converters.viewer:
+  path: /converters
+  controller: PcComponentes\DocumentationBundle\Controller\ConvertersController::viewer
+  methods: [GET]
