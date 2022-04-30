@@ -1,10 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace PcComponentes\DocumentationBundle\Service;
 
 use PcComponentes\DocumentationBundle\EventWithConverters;
-use PcComponentes\DocumentationBundle\Exception\UnavailableDefinition;
-use Symfony\Component\Routing\RouterInterface;
 
 class ConverterListing
 {
@@ -19,11 +18,14 @@ class ConverterListing
         $this->events[$event]->addConverter($converter);
     }
 
-    /**
-     * @return array<EventWithConverters>
-     */
+    /** @return array<EventWithConverters> */
     public function list(): array
     {
         return \array_values($this->events);
+    }
+
+    public function hasEvents(): bool
+    {
+        return 0 !== \count($this->events);
     }
 }

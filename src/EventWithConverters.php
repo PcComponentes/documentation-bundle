@@ -9,16 +9,20 @@ final class EventWithConverters implements \JsonSerializable
     private string $className;
     private array $converters = [];
 
+    private function __construct(string $name, string $className)
+    {
+        $this->name = $name;
+        $this->className = $className;
+    }
+
     public static function from(string $name, string $className): self
     {
-        $eventWithConverters = new static($name, $className);
-
-        return $eventWithConverters;
+        return new EventWithConverters($name, $className);
     }
 
     public function addConverter(string $converter): void
     {
-        if (true === \in_array($converter, $this->converters)) {
+        if (true === \in_array($converter, $this->converters, true)) {
             return;
         }
 
@@ -38,12 +42,6 @@ final class EventWithConverters implements \JsonSerializable
     public function converters(): array
     {
         return $this->converters;
-    }
-
-    private function __construct(string $name, string $className)
-    {
-        $this->name = $name;
-        $this->className = $className;
     }
 
     public function jsonSerialize(): array

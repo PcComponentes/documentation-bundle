@@ -27,3 +27,8 @@ pccomponentes.documentation.converters.viewer:
   path: /converters
   controller: PcComponentes\DocumentationBundle\Controller\ConvertersController::viewer
   methods: [GET]
+
+pccomponentes.documentation.home:
+    path: /
+    controller: PcComponentes\DocumentationBundle\Controller\HomeController::home
+    methods: [GET]

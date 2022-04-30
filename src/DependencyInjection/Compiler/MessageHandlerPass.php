@@ -7,7 +7,6 @@ use PcComponentes\Ddd\Domain\Model\DomainEvent;
 use PcComponentes\DocumentationBundle\Service\ConverterListing;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
 
 class MessageHandlerPass implements CompilerPassInterface
 {
@@ -21,21 +20,22 @@ class MessageHandlerPass implements CompilerPassInterface
 
         $taggedServices = $container->findTaggedServiceIds('messenger.message_handler');
 
-        foreach ($taggedServices as $id => $tags) {
+        foreach (\array_keys($taggedServices) as $id) {
             $class = $container->getDefinition($id)->getClass();
             $parameters = (new \ReflectionMethod($class, '__invoke'))->getParameters();
 
-            if (\count($parameters) !== 1) {
+            if (1 !== \count($parameters)) {
                 continue;
             }
 
             $parameter = new \ReflectionClass($parameters[0]->getType()->getName());
+
             if (false === $parameter->isSubclassOf(DomainEvent::class)) {
                 continue;
             }
 
             $converterListingDefition->addMethodCall('add', [
-                ($parameter->getName())::messageName(),
+                $parameter->getName()::messageName(),
                 $parameter->getName(),
                 $class,
             ]);

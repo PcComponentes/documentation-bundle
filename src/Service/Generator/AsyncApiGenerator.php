@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+// phpcs:disable SlevomatCodingStandard.Functions.RequireMultiLineCall.RequiredMultiLineCall
 
 namespace PcComponentes\DocumentationBundle\Service\Generator;
 
@@ -6,7 +9,7 @@ class AsyncApiGenerator extends Generator
 {
     protected function template(): string
     {
-        return trim('
+        return \trim('
         <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +20,9 @@ class AsyncApiGenerator extends Generator
 <body>
 <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.5.0/webcomponents-bundle.js"></script>
 <script src="https://unpkg.com/@asyncapi/web-component@0.19.0/lib/asyncapi-web-component.js" defer></script>
+<div style="width: 100%%; background-color: #eeeeee; padding: 0.5em 0 0.1em 0.3em; font-family: Tahoma, Verdana, sans-serif	">
+    <p><a href="' . $this->router->generate('pccomponentes.documentation.home') . '">< Go back to documentation home</a></p>
+</div>
 <asyncapi-component ' . $this->buildComponentParameters() . '>
 </asyncapi-component>
 </body>
@@ -41,8 +47,8 @@ class AsyncApiGenerator extends Generator
     {
         $parameters = '';
 
-        foreach($this->config() as $parameter => $value) {
-            $parameters .= \sprintf('%s=\'%s\' ', $parameter, str_replace('\'', '"', $value));
+        foreach ($this->config() as $parameter => $value) {
+            $parameters .= \sprintf('%s=\'%s\' ', $parameter, \str_replace('\'', '"', $value));
         }
 
         return \trim($parameters);
