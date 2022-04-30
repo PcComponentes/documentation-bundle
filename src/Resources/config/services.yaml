@@ -12,9 +12,10 @@ services:
             - '%kernel.project_dir%'
 
     PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator:
-      class: PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator
-      arguments:
-        - '@PcComponentes\DocumentationBundle\Service\ConverterListing'
+        class: PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator
+        arguments:
+            - '@router'
+            - '@PcComponentes\DocumentationBundle\Service\ConverterListing'
 
     PcComponentes\DocumentationBundle\Service\ConverterListing:
       class: PcComponentes\DocumentationBundle\Service\ConverterListing
@@ -32,8 +33,17 @@ services:
         tags: ['controller.service_arguments']
 
     PcComponentes\DocumentationBundle\Controller\ConvertersController:
-      class: PcComponentes\DocumentationBundle\Controller\ConvertersController
-      arguments:
-        - '@PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator'
-        - '@PcComponentes\DocumentationBundle\Service\ConverterListing'
-      tags: ['controller.service_arguments']
+        class: PcComponentes\DocumentationBundle\Controller\ConvertersController
+        arguments:
+            - '@PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator'
+            - '@PcComponentes\DocumentationBundle\Service\ConverterListing'
+        tags: ['controller.service_arguments']
+
+    PcComponentes\DocumentationBundle\Controller\HomeController:
+        class: PcComponentes\DocumentationBundle\Controller\HomeController
+        arguments:
+            - '@router'
+            - '@PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator'
+            - '@PcComponentes\DocumentationBundle\Service\Generator\AsyncApiGenerator'
+            - '@PcComponentes\DocumentationBundle\Service\Generator\OpenApiGenerator'
+        tags: ['controller.service_arguments']

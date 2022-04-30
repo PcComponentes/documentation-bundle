@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace PcComponentes\DocumentationBundle\Service\Generator;
 
@@ -31,12 +32,23 @@ abstract class Generator
     {
         $this->assertDefinitionExists();
 
-        return file_get_contents($this->path());
+        return \file_get_contents($this->path());
     }
 
     public function options(): array
     {
         return $this->options;
+    }
+
+    public function isReady(): bool
+    {
+        try {
+            $this->assertDefinitionExists();
+        } catch (UnavailableDefinition $exception) {
+            return false;
+        }
+
+        return true;
     }
 
     protected function definitionRoute(): string
@@ -69,6 +81,6 @@ abstract class Generator
 
     private function path(): string
     {
-        return rtrim($this->kernelDir, '/',) . '/' . ltrim($this->definitionPath);
+        return \rtrim($this->kernelDir, '/') . '/' . ltrim($this->definitionPath);
     }
 }

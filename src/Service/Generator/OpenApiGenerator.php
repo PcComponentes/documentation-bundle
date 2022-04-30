@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+// phpcs:disable SlevomatCodingStandard.Functions.RequireMultiLineCall.RequiredMultiLineCall
 
 namespace PcComponentes\DocumentationBundle\Service\Generator;
 
@@ -6,7 +9,7 @@ class OpenApiGenerator extends Generator
 {
     protected function template(): string
     {
-        return trim('
+        return \trim('
         <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +19,9 @@ class OpenApiGenerator extends Generator
     <link rel="stylesheet" href="//unpkg.com/swagger-ui-dist@4.5.0/swagger-ui.css" />
 </head>
 <body>
+<div style="width: 100%%; background-color: #eeeeee; padding: 0.5em 0 0.1em 0.3em; font-family: Tahoma, Verdana, sans-serif	">
+    <p><a href="' . $this->router->generate('pccomponentes.documentation.home') . '">< Go back to documentation home</a></p>
+</div>
 <div id="swagger-ui"></div>
 <script src="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js" crossorigin></script>
 <script>
@@ -39,5 +45,4 @@ window.onload = () => {
     {
         return $this->router->generate('pccomponentes.documentation.openapi.definition');
     }
-
 }
