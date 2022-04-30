@@ -18,7 +18,7 @@ jobs:
     steps:
       -   uses: actions/checkout@v1
           name: 'Run checkout'
-      -   run: make cache-folders build composer-install-8
+      -   run: make cache-folders build composer-install
           name: 'Build environment'
-      -   run: make tests-8
+      -   run: make tests
           name: 'Run unit tests'
