@@ -22,13 +22,13 @@
   "require": {
     "php": "^7.4 | ^8.0",
     "ext-json": "*",
-    "symfony/http-foundation": "^4.4 | ^5.0 | ^6.0",
-    "symfony/dependency-injection": "^4.4 | ^5.0 | ^6.0",
-    "symfony/config": "^4.4 | ^5.0 | ^6.0",
-    "symfony/http-kernel": "^4.4 | ^5.0 | ^6.0",
-    "symfony/routing": "^4.4 | ^5.0 | ^6.0",
-    "pccomponentes/ddd": "^2.0",
-    "symfony/yaml": "^4.4 | ^5.0 | ^6.0"
+    "symfony/http-foundation": ">=4.4 <=6",
+    "symfony/dependency-injection": ">=4.4 <=6",
+    "symfony/config": ">=4.4 <=6",
+    "symfony/http-kernel": ">=4.4 <=6",
+    "symfony/routing": ">=4.4 <=6",
+    "symfony/yaml": ">=4.4 <=6",
+    "pccomponentes/ddd": "^2.0"
   },
   "require-dev": {
     "pccomponentes/coding-standard": "^1.0",
