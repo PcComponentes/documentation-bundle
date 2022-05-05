@@ -80,3 +80,15 @@ documentation:
         schemaFetchOptions: '{"method":"GET","mode":"cors"}'
     
 ```
+
+In addition, you can add your custom links to the homepage using the `links` key, here is an example:
+
+```yaml
+documentation:
+    links:
+        - title: 'Google'
+          description: 'You can add some notes for each link'
+          url: 'https://www.google.com/'
+        - title: 'Contact PcComponentes'
+          url: 'https://www.pccomponentes.com/soporte/contactar-con-pccomponentes'
+```

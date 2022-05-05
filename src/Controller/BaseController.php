@@ -11,6 +11,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 abstract class BaseController
 {
     private Generator $generator;
+    public static array $headers = [
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Methods' => 'GET',
+        'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method',
+    ];
 
     public function __construct(Generator $generator)
     {
@@ -29,7 +34,7 @@ abstract class BaseController
     public function definition(): Response
     {
         try {
-            return new Response($this->generator->definition());
+            return new Response($this->generator->definition(), Response::HTTP_OK, BaseController::$headers);
         } catch (UnavailableDefinition $definition) {
             throw new NotFoundHttpException($definition->getMessage(), $definition);
         }

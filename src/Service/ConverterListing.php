@@ -21,7 +21,11 @@ class ConverterListing
     /** @return array<EventWithConverters> */
     public function list(): array
     {
-        return \array_values($this->events);
+        $events = \array_merge([], \array_values($this->events));
+
+        \usort($events, static fn (EventWithConverters $a, EventWithConverters $b) => \strcmp($a->name(), $b->name()));
+
+        return $events;
     }
 
     public function hasEvents(): bool

@@ -18,7 +18,10 @@ services:
             - '@PcComponentes\DocumentationBundle\Service\ConverterListing'
 
     PcComponentes\DocumentationBundle\Service\ConverterListing:
-      class: PcComponentes\DocumentationBundle\Service\ConverterListing
+        class: PcComponentes\DocumentationBundle\Service\ConverterListing
+
+    PcComponentes\DocumentationBundle\Service\LinkListing:
+        class: PcComponentes\DocumentationBundle\Service\LinkListing
 
     PcComponentes\DocumentationBundle\Controller\OpenApiController:
         class: PcComponentes\DocumentationBundle\Controller\OpenApiController
@@ -46,4 +49,5 @@ services:
             - '@PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator'
             - '@PcComponentes\DocumentationBundle\Service\Generator\AsyncApiGenerator'
             - '@PcComponentes\DocumentationBundle\Service\Generator\OpenApiGenerator'
+            - '@PcComponentes\DocumentationBundle\Service\LinkListing'
         tags: ['controller.service_arguments']

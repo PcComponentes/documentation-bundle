@@ -9,6 +9,7 @@ namespace PcComponentes\DocumentationBundle\Controller;
 use PcComponentes\DocumentationBundle\Service\Generator\AsyncApiGenerator;
 use PcComponentes\DocumentationBundle\Service\Generator\ConvertersGenerator;
 use PcComponentes\DocumentationBundle\Service\Generator\OpenApiGenerator;
+use PcComponentes\DocumentationBundle\Service\LinkListing;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -18,17 +19,20 @@ final class HomeController
     private ConvertersGenerator $convertersGenerator;
     private AsyncApiGenerator $asyncApiGenerator;
     private OpenApiGenerator $openApiGenerator;
+    private LinkListing $linkListing;
 
     public function __construct(
         RouterInterface $router,
         ConvertersGenerator $convertersGenerator,
         AsyncApiGenerator $asyncApiGenerator,
-        OpenApiGenerator $openApiGenerator
+        OpenApiGenerator $openApiGenerator,
+        LinkListing $linkListing
     ) {
         $this->router = $router;
         $this->convertersGenerator = $convertersGenerator;
         $this->asyncApiGenerator = $asyncApiGenerator;
         $this->openApiGenerator = $openApiGenerator;
+        $this->linkListing = $linkListing;
     }
 
     public function home(): Response
@@ -62,6 +66,7 @@ final class HomeController
             <hr class="my-4">
             <p class="lead">%s</p>
         </div>
+        %s
     </main>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -71,7 +76,7 @@ final class HomeController
 </html>
         ');
 
-        return \sprintf($html, $this->buildButtons());
+        return \sprintf($html, $this->buildButtons(), $this->buildLinks());
     }
 
     private function buildButtons(): string
@@ -84,7 +89,7 @@ final class HomeController
                 $this->router->generate('pccomponentes.documentation.openapi.viewer'),
             );
         }
-        
+
         if ($this->asyncApiGenerator->isReady()) {
             $buttons .= \sprintf(
                 '<a class="btn btn-primary" href="%s" role="button">AsyncApi</a> ',
@@ -100,5 +105,32 @@ final class HomeController
         }
 
         return $buttons;
+    }
+
+    private function buildLinks(): string
+    {
+        if (false === $this->linkListing->hasLinks()) {
+            return '';
+        }
+
+        $links = '';
+
+        foreach ($this->linkListing->list() as $link) {
+            $links .= \sprintf(
+                '<h6 class="p-0 m-0"><a href="%s" target="_blank">%s</a></h6><p><small>%s</small></p>',
+                $link[LinkListing::KEY_URL],
+                $link[LinkListing::KEY_TITLE],
+                $link[LinkListing::KEY_DESCRIPTION],
+            );
+        }
+
+        return \sprintf(\trim('
+        <row>
+            <col>
+                <h2>Other links</h2>
+                %s
+            </col>
+        </row>
+        '), $links);
     }
 }

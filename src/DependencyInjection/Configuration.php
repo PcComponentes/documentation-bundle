@@ -32,6 +32,15 @@ class Configuration implements ConfigurationInterface
                 ->defaultValue([])
                 ->prototype('scalar')->end()
                 ->end()
+            ->arrayNode('links')
+                ->defaultValue([])
+                ->prototype('array')
+                    ->children()
+                        ->scalarNode('title')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('description')->defaultValue('')->end()
+                        ->scalarNode('url')->isRequired()->cannotBeEmpty()->end()
+                    ->end()
+                ->end()
             ->end()
         ;
 
