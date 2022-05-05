@@ -89,7 +89,7 @@ final class HomeController
                 $this->router->generate('pccomponentes.documentation.openapi.viewer'),
             );
         }
-        
+
         if ($this->asyncApiGenerator->isReady()) {
             $buttons .= \sprintf(
                 '<a class="btn btn-primary" href="%s" role="button">AsyncApi</a> ',
@@ -117,7 +117,7 @@ final class HomeController
 
         foreach ($this->linkListing->list() as $link) {
             $links .= \sprintf(
-                '<li><a href="%s" target="_blank">%s</a>. <small>%s</small></li>',
+                '<h6 class="p-0 m-0"><a href="%s" target="_blank">%s</a></h6><p><small>%s</small></p>',
                 $link[LinkListing::KEY_URL],
                 $link[LinkListing::KEY_TITLE],
                 $link[LinkListing::KEY_DESCRIPTION],
@@ -128,7 +128,7 @@ final class HomeController
         <row>
             <col>
                 <h2>Other links</h2>
-                <ul>%s</ul>
+                %s
             </col>
         </row>
         '), $links);
