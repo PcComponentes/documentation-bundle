@@ -119,8 +119,8 @@ final class HomeController
             $links .= \sprintf(
                 '<li><a href="%s" target="_blank">%s</a>. <small>%s</small></li>',
                 $link[LinkListing::KEY_URL],
-                $link[LinkListing::KEY_DESCRIPTION],
                 $link[LinkListing::KEY_TITLE],
+                $link[LinkListing::KEY_DESCRIPTION],
             );
         }
 
