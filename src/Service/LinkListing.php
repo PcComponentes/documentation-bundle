@@ -6,6 +6,7 @@ namespace PcComponentes\DocumentationBundle\Service;
 class LinkListing
 {
     public const KEY_TITLE = 'title';
+    public const KEY_DESCRIPTION = 'description';
     public const KEY_URL = 'url';
 
     protected array $links = [];
