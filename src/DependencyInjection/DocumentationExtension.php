@@ -5,6 +5,7 @@ namespace PcComponentes\DocumentationBundle\DependencyInjection;
 
 use PcComponentes\DocumentationBundle\Service\Generator\AsyncApiGenerator;
 use PcComponentes\DocumentationBundle\Service\Generator\OpenApiGenerator;
+use PcComponentes\DocumentationBundle\Service\LinkListing;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -30,5 +31,8 @@ class DocumentationExtension extends Extension
         $asyncApiDefinition = $container->getDefinition(AsyncApiGenerator::class);
         $asyncApiDefinition->setArgument('$definitionPath', $config['asyncapi']);
         $asyncApiDefinition->setArgument('$options', $config['asyncapi_options']);
+
+        $asyncApiDefinition = $container->getDefinition(LinkListing::class);
+        $asyncApiDefinition->addMethodCall('set', [$config['links']]);
     }
 }

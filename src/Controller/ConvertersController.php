@@ -32,6 +32,6 @@ final class ConvertersController
 
     public function definition(): JsonResponse
     {
-        return new JsonResponse($this->converterListing->list());
+        return new JsonResponse($this->converterListing->list(), Response::HTTP_OK, BaseController::$headers);
     }
 }
