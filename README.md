@@ -87,6 +87,7 @@ In addition, you can add your custom links to the homepage using the `links` key
 documentation:
     links:
         - title: 'Google'
+          description: 'You can add some notes for each link'
           url: 'https://www.google.com/'
         - title: 'Contact PcComponentes'
           url: 'https://www.pccomponentes.com/soporte/contactar-con-pccomponentes'
