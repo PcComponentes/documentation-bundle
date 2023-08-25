@@ -20,7 +20,7 @@
     }
   },
   "require": {
-    "php": "^7.4 | ^8.0",
+    "php": "^7.4 | ^8.2",
     "ext-json": "*",
     "symfony/http-foundation": ">=4.4 <=6",
     "symfony/dependency-injection": ">=4.4 <=6",
