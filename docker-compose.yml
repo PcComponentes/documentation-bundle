@@ -18,7 +18,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
-      target: php8
+      target: base
     volumes:
       - .:/var/app
       - ~/.composer:/.composer
