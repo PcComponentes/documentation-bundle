@@ -1,4 +1,4 @@
-FROM php:8.2-fpm-alpine3.18 as base
+FROM php:8.2-fpm-alpine3.18 as php8
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin
 RUN apk update \
